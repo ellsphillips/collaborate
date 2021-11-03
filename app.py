@@ -13,7 +13,7 @@ PREVIOUS_MATCHES = DATA_DIR / "previous_matches.csv"
 def main():
     # Load datasets
     collaborate_data = pd.read_csv(SIGNUP_DATA)
-    previous_matches = pd.read_csv(PREVIOUS_MATCHES, encoding="utf-8")
+    previous_matches = pd.read_csv(PREVIOUS_MATCHES)
 
     print(collaborate_data.head())
     print(previous_matches.head())
