@@ -5,7 +5,7 @@ from pandas import DataFrame
 from .member import Member
 
 
-def generate_id(length: int = 32):
+def generate_id(length: int = 16):
     return "".join(random.choices(string.ascii_uppercase, k=length))
 
 class CollaborateService:

@@ -23,7 +23,9 @@ def main():
     # Register members
     service.register_members(members_data)
 
-    print(*service.get_all_members(), sep='\n')
+    all_members = service.get_all_members()
+
+    print(*all_members, sep='\n')
 
 
 if __name__ =="__main__":
