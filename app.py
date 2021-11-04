@@ -1,23 +1,32 @@
 import pathlib
 import pandas as pd
-import random
+import os
+
+from collaborate.service import CollaborateService
 
 
 # Config
 AUTHOR = "elliott.phillips@ons.gov.uk"
 DATA_DIR = pathlib.Path("data/")
-SIGNUP_DATA = DATA_DIR / "signups.csv"
+MEMBERS_DATA = DATA_DIR / "members.csv"
 PREVIOUS_MATCHES = DATA_DIR / "previous_matches.csv"
 
 
 def main():
+    # create a IOT service
+    service = CollaborateService()
+
     # Load datasets
-    collaborate_data = pd.read_csv(SIGNUP_DATA)
+    members_data = pd.read_csv(MEMBERS_DATA)
     previous_matches = pd.read_csv(PREVIOUS_MATCHES)
 
-    print(collaborate_data.head())
-    print(previous_matches.head())
+    # Register members
+    service.register_members(members_data)
+
+    print(*service.get_all_members(), sep='\n')
 
 
 if __name__ =="__main__":
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     main()
