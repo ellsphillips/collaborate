@@ -3,19 +3,24 @@ from .member import Member
 class Matcher:
     """
     """
+    def __init__(self, members: list[Member]) -> None:
+        self.members = members
 
-    def __init__(self) -> None:
-        pass
-
-    def remove_duplicates(self, member_list: list[Member]) -> None:
-        if len(member_list) == len(set(member_list)):
-            return member_list
+    def remove_duplicates(self) -> None:
+        if len(self.members) == len(set(self.members)):
+            return self.members
         
-        duplicates = set([m for m in member_list if member_list.count(m) > 1])
+        duplicates = set([
+            m for m in self.members
+            if self.members.count(m) > 1]
+        )
+
         print(
             "\n".join([
                 f"Removed {len(duplicates)} duplicates from " \
-                    f"list of {len(member_list)} members:",
+                    f"list of {len(self.members)} members:",
                 *sorted([str(dup) for dup in duplicates])
             ])
         )
+
+        return sorted(list(set(self.members)))

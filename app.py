@@ -27,6 +27,12 @@ def main():
 
     print(*all_members, sep='\n')
 
+    matcher = Matcher(all_members)
+
+    print(
+        *matcher.remove_duplicates(), sep='\n'
+    )
+
 
 if __name__ =="__main__":
     os.system('cls' if os.name == 'nt' else 'clear')
