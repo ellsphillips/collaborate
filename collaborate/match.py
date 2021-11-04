@@ -1,4 +1,21 @@
+from abc import ABC, abstractmethod
+
 from .member import Member
+
+class MatchingStrategy(ABC):
+    @abstractmethod
+    def create_matches(self, members: list[Member]) -> list[Member]:
+        """Returns an ordered list of member pairs."""
+
+class FFAMatchingStrategy(MatchingStrategy):
+    """Free-for-all matching"""
+    def create_matches(self, members: list[Member]) -> list[Member]:
+        return members
+
+class XDMatchingStrategy(MatchingStrategy):
+    """Cross-divisional matching"""
+    def create_matches(self, members: list[Member]) -> list[Member]:
+        return members
 
 class Matcher:
     """
@@ -24,3 +41,7 @@ class Matcher:
         )
 
         return sorted(list(set(self.members)))
+
+    def match_members(self, matching_strategy: MatchingStrategy) -> None:
+        matches = matching_strategy.create_matches(self.members)
+

@@ -2,6 +2,7 @@ import pathlib
 import pandas as pd
 import os
 
+from collaborate.match import Matcher
 from collaborate.service import CollaborateService
 
 

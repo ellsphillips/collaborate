@@ -25,6 +25,3 @@ class CollaborateService:
 
     def get_all_members(self) -> list[Member]:
         return list(self.members.values())
-
-    def create_matches(self) -> None:
-        pass
