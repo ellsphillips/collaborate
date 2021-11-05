@@ -4,6 +4,7 @@ from typing import List
 from pandas import DataFrame
 
 from .member import Member
+from .match import Matcher, MatchingStrategy
 
 
 def generate_id(length: int = 16):
@@ -26,3 +27,14 @@ class CollaborateService:
 
     def get_all_members(self) -> List[Member]:
         return list(self.members.values())
+
+    def match(
+        self,
+        members: List[Member],
+        strategy: MatchingStrategy
+    ) -> list:
+        matcher = Matcher(members)
+
+        matcher.remove_duplicates()
+
+        return matcher.match_members(strategy)

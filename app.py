@@ -2,7 +2,7 @@ import pathlib
 import pandas as pd
 import os
 
-from collaborate.match import Matcher
+from collaborate.match import FFAMatchingStrategy
 from collaborate.service import CollaborateService
 
 
@@ -28,10 +28,12 @@ def main():
 
     print(*all_members, sep='\n')
 
-    matcher = Matcher(all_members)
-
     print(
-        *matcher.remove_duplicates(), sep='\n'
+        *service.match(
+            all_members,
+            FFAMatchingStrategy()
+        ),
+        sep="\n"
     )
 
 

@@ -51,5 +51,5 @@ class Matcher:
         return sorted(list(set(self.members)))
 
     def match_members(self, matching_strategy: MatchingStrategy) -> None:
-        matches = matching_strategy.create_matches(self.members)
+        return  matching_strategy.create_matches(self.members)
 
