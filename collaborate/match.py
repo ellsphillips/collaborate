@@ -14,6 +14,12 @@ class FFAMatchingStrategy(MatchingStrategy):
     def create_matches(self, members: List[Member]) -> List[Member]:
         return [pair for pair in self.reduce_pairs(members)]
 
+    def reduce_pairs(self, members: List[Member]):
+        while len(members) > 0:
+            pair = random.sample(members, 2)
+            yield pair
+            members = [e for e in members if e not in pair]
+
 class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
     def create_matches(self, members: List[Member]) -> List[Member]:
