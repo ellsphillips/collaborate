@@ -1,26 +1,28 @@
 from abc import ABC, abstractmethod
+from typing import List
+import random
 
 from .member import Member
 
 class MatchingStrategy(ABC):
     @abstractmethod
-    def create_matches(self, members: list[Member]) -> list[Member]:
+    def create_matches(self, members: List[Member]) -> List[Member]:
         """Returns an ordered list of member pairs."""
 
 class FFAMatchingStrategy(MatchingStrategy):
     """Free-for-all matching"""
-    def create_matches(self, members: list[Member]) -> list[Member]:
-        return members
+    def create_matches(self, members: List[Member]) -> List[Member]:
+        return [pair for pair in self.reduce_pairs(members)]
 
 class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
-    def create_matches(self, members: list[Member]) -> list[Member]:
+    def create_matches(self, members: List[Member]) -> List[Member]:
         return members
 
 class Matcher:
     """
     """
-    def __init__(self, members: list[Member]) -> None:
+    def __init__(self, members: List[Member]) -> None:
         self.members = members
 
     def remove_duplicates(self) -> None:

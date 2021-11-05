@@ -1,5 +1,6 @@
 import random
 import string
+from typing import List
 from pandas import DataFrame
 
 from .member import Member
@@ -23,5 +24,5 @@ class CollaborateService:
     def get_member(self, member_id: str) -> Member:
         return self.members[member_id]
 
-    def get_all_members(self) -> list[Member]:
+    def get_all_members(self) -> List[Member]:
         return list(self.members.values())
