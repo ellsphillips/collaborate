@@ -2,7 +2,7 @@ import pathlib
 import pandas as pd
 import os
 
-from collaborate.match import FFAMatchingStrategy
+from collaborate.match import BlackHoleMatchingStrategy, FFAMatchingStrategy
 from collaborate.service import CollaborateService
 
 
@@ -31,7 +31,7 @@ def main():
     print(
         *service.match(
             all_members,
-            FFAMatchingStrategy()
+            BlackHoleMatchingStrategy()
         ),
         sep="\n"
     )

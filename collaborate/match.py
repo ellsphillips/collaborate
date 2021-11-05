@@ -23,7 +23,13 @@ class FFAMatchingStrategy(MatchingStrategy):
 class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
     def create_matches(self, members: List[Member]) -> List[Member]:
-        return members
+        pass
+
+class BlackHoleMatchingStrategy(MatchingStrategy):
+    """Cross-divisional matching"""
+    def create_matches(self, members: List[Member]) -> List[Member]:
+        print("Not running Collaborate this month!")
+        return []
 
 class Matcher:
     """
