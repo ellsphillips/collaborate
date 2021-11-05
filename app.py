@@ -1,10 +1,13 @@
+import os
 import pathlib
 import pandas as pd
-import os
 
-from collaborate.match import BlackHoleMatchingStrategy, FFAMatchingStrategy
 from collaborate.service import CollaborateService
-
+from collaborate.match import (
+    BlackHoleMatchingStrategy,
+    FFAMatchingStrategy,
+    XDMatchingStrategy
+)
 
 # Config
 AUTHOR = "elliott.phillips@ons.gov.uk"
@@ -14,7 +17,7 @@ PREVIOUS_MATCHES = DATA_DIR / "previous_matches.csv"
 
 
 def main():
-    # create a IOT service
+    # Create a service provider
     service = CollaborateService()
 
     # Load datasets
@@ -29,15 +32,20 @@ def main():
     print(*all_members, sep='\n')
 
     print(
-        *service.match(
-            all_members,
-            BlackHoleMatchingStrategy()
-        ),
+        *[
+            "\t->\t".join([
+                first.division.name + "\t" + first.email,
+                second.division.name + "\t" + second.email
+            ]) for first, second in service.match(
+                all_members,
+                FFAMatchingStrategy()
+            )
+        ],
         sep="\n"
     )
 
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     os.system('cls' if os.name == 'nt' else 'clear')
 
     main()

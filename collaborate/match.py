@@ -1,8 +1,9 @@
+import random
 from abc import ABC, abstractmethod
 from typing import List
-import random
 
 from .member import Member
+
 
 class MatchingStrategy(ABC):
     @abstractmethod
@@ -58,4 +59,3 @@ class Matcher:
 
     def match_members(self, matching_strategy: MatchingStrategy) -> None:
         return  matching_strategy.create_matches(self.members)
-

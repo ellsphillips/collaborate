@@ -3,8 +3,8 @@ import string
 from typing import List
 from pandas import DataFrame
 
-from .member import Member
 from .match import Matcher, MatchingStrategy
+from .member import Division, Member
 
 
 def generate_id(length: int = 16):
@@ -20,7 +20,9 @@ class CollaborateService:
         for row in range(len(members_data)):
             name, email, division = members_data.loc[row, :].values.tolist()
             member_id = generate_id()
-            self.members[member_id] = Member(member_id, name, email, division)
+            self.members[member_id] = Member(
+                member_id, name, email, Division[division]
+            )
 
     def get_member(self, member_id: str) -> Member:
         return self.members[member_id]
