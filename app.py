@@ -40,7 +40,8 @@ def main():
                     )
                 )
             ])
-        ]
+        ],
+        "\n"
     )
 
     print(
@@ -53,6 +54,7 @@ def main():
                 FFAMatchingStrategy()
             )
         ],
+        "\n",
         sep="\n"
     )
 

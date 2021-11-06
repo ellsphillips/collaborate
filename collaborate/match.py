@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 from .member import Member
+from .utils import Colour
 
 
 class MatchingStrategy(ABC):
@@ -39,7 +40,6 @@ class XDMatchingStrategy(MatchingStrategy):
         5. At threshold, assign pair irrespective of Division
         """
         first, *members = random.sample(members, len(members) - 2)
-        # second = random.sample(members)
 
         print(
             f"{first.name} picked from users",
@@ -94,4 +94,9 @@ class Matcher:
         return sorted(list(set(self.members)))
 
     def match_members(self, matching_strategy: MatchingStrategy) -> None:
+        print(
+            "\nMatching members with",
+            f"{Colour.CYAN}{matching_strategy.__class__.__name__}{Colour.END}",
+            "\n" + "-"*50
+        )
         return  matching_strategy.create_matches(self.members)
