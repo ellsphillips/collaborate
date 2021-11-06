@@ -26,7 +26,11 @@ class FFAMatchingStrategy(MatchingStrategy):
 class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
     
-    def create_matches(self, members: List[Member]) -> List[Member]:
+    def create_matches(
+        self,
+        members: List[Member],
+        threshold: int = 3
+    ) -> List[Member]:
         """
         1. Choose member at random, assign immediately
         2. Choose second member
@@ -44,8 +48,19 @@ class XDMatchingStrategy(MatchingStrategy):
             ]) + "]"
         )
 
-        return first
+        punt = random.choice(members)
 
+        if first.division.name != punt.division.name:
+            return first, punt
+
+        for _ in range(threshold):
+            second = random.choice(members)
+            if first.division.name != second.division.name:
+                members.remove(second)
+                return first, second
+
+        return first, random.sample(members, 1)[0]
+        
 class BlackHoleMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
     

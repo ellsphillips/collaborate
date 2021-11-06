@@ -30,10 +30,17 @@ def main():
     all_members = service.get_all_members()
 
     print(
-        service.match(
-            all_members,
-            XDMatchingStrategy()
-        )
+        *[
+            " meets ".join([
+                m.name.split()[1] + f" ({m.division.name})"
+                for m in sorted(
+                    service.match(
+                        all_members,
+                        XDMatchingStrategy()
+                    )
+                )
+            ])
+        ]
     )
 
     print(
