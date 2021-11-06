@@ -27,6 +27,13 @@ class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
     
     def create_matches(self, members: List[Member]) -> List[Member]:
+        """
+        1. Choose member at random, assign immediately
+        2. Choose second member
+        3. Compare both choices' Division, if different, create pair
+        4. If equal, repeat steps 2-3 up to threshold (<=3)
+        5. At threshold, assign pair irrespective of Division
+        """
         first, *members = random.sample(members, len(members) - 2)
         # second = random.sample(members)
 
