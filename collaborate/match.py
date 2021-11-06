@@ -18,7 +18,7 @@ class FFAMatchingStrategy(MatchingStrategy):
         return [pair for pair in self.reduce_pairs(members)]
 
     def reduce_pairs(self, members: List[Member]):
-        while len(members) > 0:
+        while not len(members) < 2:
             pair = random.sample(members, 2)
             yield pair
             members = [e for e in members if e not in pair]
