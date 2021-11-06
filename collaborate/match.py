@@ -62,7 +62,7 @@ class XDMatchingStrategy(MatchingStrategy):
         return first, random.sample(members, 1)[0]
         
 class BlackHoleMatchingStrategy(MatchingStrategy):
-    """Cross-divisional matching"""
+    """Chuck it in the bin"""
     
     def create_matches(self, members: List[Member]) -> List[Member]:
         print("Not running Collaborate this month!")
