@@ -25,9 +25,11 @@ class Member:
 
     def __str__(self) -> str:
         return (
-            f"{Colour.PURPLE}{self.member_id}"
-            f"{Colour.CYAN} Member: "
-            f"{Colour.END}{self.division} \t"
-            f"{Colour.YELLOW}{self.name} "
-            f"{Colour.END}({self.email})"
+            # f"{Colour.PURPLE}{self.member_id}{Colour.END}"
+            f"{Colour.CYAN}Member{Colour.END}"
+            "(" + ", ".join([
+                f"{self.name}",
+                f"{Colour.YELLOW}{self.email}{Colour.END}",
+                f"{self.division.name}"
+            ]) + ")"
         )

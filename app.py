@@ -1,6 +1,6 @@
 import os
 import pathlib
-import pandas as pd
+from pandas import read_csv
 
 from collaborate.service import CollaborateService
 from collaborate.match import (
@@ -21,8 +21,8 @@ def main():
     service = CollaborateService()
 
     # Load datasets
-    members_data = pd.read_csv(MEMBERS_DATA)
-    previous_matches = pd.read_csv(PREVIOUS_MATCHES)
+    members_data = read_csv(MEMBERS_DATA)
+    previous_matches = read_csv(PREVIOUS_MATCHES)
 
     # Register members
     service.register_members(members_data)

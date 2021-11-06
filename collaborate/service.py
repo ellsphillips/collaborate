@@ -11,8 +11,8 @@ def generate_id(length: int = 16):
     return "".join(random.choices(string.ascii_uppercase, k=length))
 
 class CollaborateService:
-    """
-    """
+    """Monthly Collaborate service provider"""
+    
     def __init__(self) -> None:
         self.members: dict[str, Member] = {}
 

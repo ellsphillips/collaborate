@@ -6,12 +6,14 @@ from .member import Member
 
 
 class MatchingStrategy(ABC):
+    
     @abstractmethod
     def create_matches(self, members: List[Member]) -> List[Member]:
         """Returns an ordered list of member pairs."""
 
 class FFAMatchingStrategy(MatchingStrategy):
     """Free-for-all matching"""
+    
     def create_matches(self, members: List[Member]) -> List[Member]:
         return [pair for pair in self.reduce_pairs(members)]
 
@@ -23,18 +25,20 @@ class FFAMatchingStrategy(MatchingStrategy):
 
 class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
+    
     def create_matches(self, members: List[Member]) -> List[Member]:
         pass
 
 class BlackHoleMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
+    
     def create_matches(self, members: List[Member]) -> List[Member]:
         print("Not running Collaborate this month!")
         return []
 
 class Matcher:
-    """
-    """
+    """Matching behaviour and preparation controller"""
+
     def __init__(self, members: List[Member]) -> None:
         self.members = members
 
