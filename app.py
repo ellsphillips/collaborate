@@ -29,7 +29,12 @@ def main():
 
     all_members = service.get_all_members()
 
-    print(*all_members, sep='\n')
+    print(
+        service.match(
+            all_members,
+            XDMatchingStrategy()
+        )
+    )
 
     print(
         *[

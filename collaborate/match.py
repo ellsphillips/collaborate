@@ -27,7 +27,17 @@ class XDMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
     
     def create_matches(self, members: List[Member]) -> List[Member]:
-        pass
+        first, *members = random.sample(members, len(members) - 2)
+        # second = random.sample(members)
+
+        print(
+            f"{first.name} picked from users",
+            "[" + ", ".join([
+                m.name.split()[1] for m in sorted(members)
+            ]) + "]"
+        )
+
+        return first
 
 class BlackHoleMatchingStrategy(MatchingStrategy):
     """Cross-divisional matching"""
