@@ -48,11 +48,6 @@ class XDMatchingStrategy(MatchingStrategy):
             ]) + "]"
         )
 
-        punt = random.choice(members)
-
-        if first.division.name != punt.division.name:
-            return first, punt
-
         for _ in range(threshold):
             second = random.choice(members)
             if first.division.name != second.division.name:
