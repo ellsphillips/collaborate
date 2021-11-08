@@ -18,7 +18,7 @@ class FFAMatchingStrategy(MatchingStrategy):
     def create_matches(self, members: List[Member]) -> List[Member]:
         return [pair for pair in self.reduce_pairs(members)]
 
-    def reduce_pairs(self, members: List[Member]):
+    def reduce_pairs(self, members: List[Member]) -> None:
         while not len(members) < 2:
             pair = random.sample(members, 2)
             yield pair
@@ -87,6 +87,10 @@ class Matcher:
         )
 
         return sorted(list(set(self.members)))
+
+    def ensure_even(self, author: str) -> None:
+        if len(self.members) % 2 != 0:
+            self.members.remove(author)
 
     def match_members(self, matching_strategy: MatchingStrategy) -> None:
         print(
