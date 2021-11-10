@@ -24,8 +24,24 @@ class CollaborateService:
                 member_id, name, email, Division[division]
             )
 
-    def get_member(self, member_id: str) -> Member:
-        return self.members[member_id]
+    # Amalgmate get methods into concise request method
+    
+    def get_member(
+        self,
+        member_id: str = None,
+        email: str = None
+    ) -> Member:
+        if all(arg is None for arg in (member_id, email)):
+            raise ValueError("Provide either a member's ID or email address.")
+        
+        if member_id is not None:
+            return self.members[member_id]
+        
+        if email is not None:
+            return [m for m in self.members.values() if m.email == email][0]
+            
+    def get_id(self, email: str) -> Member:
+        return [m.member_id for m in self.members.values() if m.email == email][0]
 
     def get_all_members(self) -> List[Member]:
         return list(self.members.values())
