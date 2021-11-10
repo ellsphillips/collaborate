@@ -99,3 +99,6 @@ class Matcher:
             "\n" + "-"*50
         )
         return  matching_strategy.create_matches(self.members)
+    
+    def print(self) -> None:
+        print(*[m.name for m in self.members], sep="\n")
