@@ -58,6 +58,21 @@ def main():
         sep="\n"
     )
 
+    #
+
+    import json
+
+    members_dict = {}
+
+    members_dict["members"] = [
+        {
+            "name": member.name,
+            "email": member.email,
+            "division": member.division.name,
+        }
+        for member in all_members
+    ]
+    
 
 if __name__ == "__main__":
     os.system('cls' if os.name == 'nt' else 'clear')
