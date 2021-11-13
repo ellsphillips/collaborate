@@ -1,7 +1,9 @@
+from json import load
 import os
 import pathlib
 from pandas import read_csv
 
+from collaborate.database import Database
 from collaborate.service import CollaborateService
 from collaborate.match import (
     BlackHoleMatchingStrategy,
@@ -12,7 +14,8 @@ from collaborate.match import (
 # Config
 AUTHOR = "elliott.phillips@ons.gov.uk"
 DATA_DIR = pathlib.Path("data/")
-MEMBERS_DATA = DATA_DIR / "members.csv"
+MEMBERS_DATA = DATA_DIR / "members.json"
+MEMBERS_DATASET = DATA_DIR / "members.csv"
 PREVIOUS_MATCHES = DATA_DIR / "previous_matches.csv"
 
 
@@ -21,10 +24,20 @@ def main():
     service = CollaborateService()
 
     # Load datasets
-    members_data = read_csv(MEMBERS_DATA)
+    db = Database(MEMBERS_DATA)
+    
+    memories = db.load()
+    
+    members_data = read_csv(MEMBERS_DATASET)
     previous_matches = read_csv(PREVIOUS_MATCHES)
 
     # Register members
+    # TODO: Change service.register_members() to accept
+    #       the members data read in from JSON.
+    #       
+    #   01. For each member, insert and assign name, email
+    #       and division into Member object. 
+    #   02. Only generate ID if new to the system.
     service.register_members(members_data)
 
     all_members = service.get_all_members()
