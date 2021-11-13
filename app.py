@@ -33,20 +33,34 @@ def main():
         
     print(service.get_member(email=AUTHOR))
 
-    #
+    # print(
+    #     *[
+    #         " meets ".join([
+    #             m.name.split()[1] + f" ({m.division.name})"
+    #             for m in sorted(
+    #                 service.match(
+    #                     all_members,
+    #                     XDMatchingStrategy()
+    #                 )
+    #             )
+    #         ])
+    #     ],
+    #     "\n"
+    # )
 
-    import json
-
-    members_dict = {}
-
-    members_dict["members"] = [
-        {
-            "name": member.name,
-            "email": member.email,
-            "division": member.division.name,
-        }
-        for member in all_members
-    ]
+    # print(
+    #     *[
+    #         "\t->\t".join([
+    #             first.division.name + "\t" + first.email,
+    #             second.division.name + "\t" + second.email
+    #         ]) for first, second in service.match(
+    #             all_members,
+    #             FFAMatchingStrategy()
+    #         )
+    #     ],
+    #     "\n",
+    #     sep="\n"
+    # )
     
 
 if __name__ == "__main__":
