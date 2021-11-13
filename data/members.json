@@ -1,0 +1,124 @@
+{
+  "info": {
+    "author": "Elliott Phillips",
+    "version": "0.0.1"
+  },
+  "count": 23,
+  "members": [
+    {
+      "name": "User 10",
+      "email": "user.1-0@ons.gov.uk",
+      "division": "BST"
+    },
+    {
+      "name": "User 11",
+      "email": "user.1-1@ons.gov.uk",
+      "division": "AME"
+    },
+    {
+      "name": "User 12",
+      "email": "user.1-2@ons.gov.uk",
+      "division": "DSC"
+    },
+    {
+      "name": "User 12",
+      "email": "user.1-2@ons.gov.uk",
+      "division": "DSC"
+    },
+    {
+      "name": "User 13",
+      "email": "user.1-3@ons.gov.uk",
+      "division": "PS"
+    },
+    {
+      "name": "User 14",
+      "email": "user.1-4@ons.gov.uk",
+      "division": "EP"
+    },
+    {
+      "name": "User 15",
+      "email": "user.1-5@ons.gov.uk",
+      "division": "AME"
+    },
+    {
+      "name": "User 16",
+      "email": "user.1-6@ons.gov.uk",
+      "division": "BST"
+    },
+    {
+      "name": "User 17",
+      "email": "user.1-7@ons.gov.uk",
+      "division": "EP"
+    },
+    {
+      "name": "User 18",
+      "email": "user.1-8@ons.gov.uk",
+      "division": "EP"
+    },
+    {
+      "name": "User 19",
+      "email": "user.1-9@ons.gov.uk",
+      "division": "AME"
+    },
+    {
+      "name": "User 20",
+      "email": "user.2-0@ons.gov.uk",
+      "division": "DSC"
+    },
+    {
+      "name": "User 21",
+      "email": "user.2-1@ons.gov.uk",
+      "division": "AME"
+    },
+    {
+      "name": "User 22",
+      "email": "user.2-2@ons.gov.uk",
+      "division": "DSC"
+    },
+    {
+      "name": "User 23",
+      "email": "user.2-3@ons.gov.uk",
+      "division": "BST"
+    },
+    {
+      "name": "User 24",
+      "email": "user.2-4@ons.gov.uk",
+      "division": "BST"
+    },
+    {
+      "name": "User 24",
+      "email": "user.2-4@ons.gov.uk",
+      "division": "BST"
+    },
+    {
+      "name": "User 25",
+      "email": "user.2-5@ons.gov.uk",
+      "division": "BST"
+    },
+    {
+      "name": "User 26",
+      "email": "user.2-6@ons.gov.uk",
+      "division": "DSC"
+    },
+    {
+      "name": "User 27",
+      "email": "user.2-7@ons.gov.uk",
+      "division": "EP"
+    },
+    {
+      "name": "User 28",
+      "email": "user.2-8@ons.gov.uk",
+      "division": "DSC"
+    },
+    {
+      "name": "User 29",
+      "email": "user.2-9@ons.gov.uk",
+      "division": "AME"
+    },
+    {
+      "name": "Elliott Phillips",
+      "email": "elliott.phillips@ons.gov.uk",
+      "division": "AME"
+    }
+  ]
+}
