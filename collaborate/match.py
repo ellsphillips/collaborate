@@ -98,7 +98,21 @@ class Matcher:
             f"{Colour.CYAN}{matching_strategy.__class__.__name__}{Colour.END}",
             "\n" + "-"*50
         )
-        return  matching_strategy.create_matches(self.members)
+        
+        matches = matching_strategy.create_matches(self.members)
+        
+        print(
+            *[
+                "\t->\t".join([
+                    first.division.name + "\t" + first.email,
+                    second.division.name + "\t" + second.email
+                ]) for first, second in matches
+            ],
+            "\n",
+            sep="\n"
+        )
+        
+        return matches
     
     def print(self) -> None:
         print(*[m.name for m in self.members], sep="\n")

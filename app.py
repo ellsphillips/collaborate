@@ -1,4 +1,3 @@
-from json import load
 import os
 import pathlib
 from pandas import read_csv
@@ -30,16 +29,12 @@ def main():
 
     # Register members
     service.register_members(members_data)
-
     all_members = service.get_all_members()
     
-    print(
-        "\n" + "-"*50 + "\n"
-        "AUTHOR INFO"
-        "\n" + "-"*50 + "\n"
-        f"ID: {service.get_id(AUTHOR)}\n"
-        f"MEMBER OBJECT:\n{service.get_member(email=AUTHOR)}"
-        "\n" + "-"*50 + "\n"
+    # Create matches
+    service.match(
+        all_members,
+        XDMatchingStrategy()
     )
     
 
