@@ -16,13 +16,26 @@ class CollaborateService:
     def __init__(self) -> None:
         self.members: dict[str, Member] = {}
 
-    def register_members(self, members_data: DataFrame) -> str:
+    def register_from_csv(self, members_data: DataFrame) -> None:
         for row in range(len(members_data)):
             name, email, division = members_data.loc[row, :].values.tolist()
             member_id = generate_id()
             self.members[member_id] = Member(
                 member_id, name, email, Division[division]
             )
+            
+    def register_members(self, members_data: dict) -> None:
+        for member in members_data["members"]:
+            member_id = member["id"] if "id" in member else generate_id()
+            
+            self.members[member_id] = Member(
+                member_id,
+                member["name"],
+                member["email"],
+                Division[member["division"]]
+            )
+            
+            print(member_id)
 
     # Amalgmate get methods into concise request method
     
