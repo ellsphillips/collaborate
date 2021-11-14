@@ -32,29 +32,25 @@ class XDMatchingStrategy(MatchingStrategy):
         members: List[Member],
         threshold: int = 3
     ) -> List[Member]:
-        """
-        1. Choose member at random, assign immediately
-        2. Choose second member
-        3. Compare both choices' Division, if different, create pair
-        4. If equal, repeat steps 2-3 up to threshold (<=3)
-        5. At threshold, assign pair irrespective of Division
-        """
-        first, *members = random.sample(members, len(members) - 2)
+        return [pair for pair in self.reduce_pairs(members, threshold)]
+    
+    # TODO: Build XDMatch pair reducer
+    def reduce_pairs(
+        self,
+        members: List[Member],
+        threshold: int
+    ) -> None:
+        while not len(members) < 2:
+            
+            first, *members = random.sample(members, len(members) - 2)
 
-        print(
-            f"{first.name} picked from users",
-            "[" + ", ".join([
-                m.name.split()[1] for m in sorted(members)
-            ]) + "]"
-        )
+            for _ in range(threshold):
+                second = random.choice(members)
+                if first.division.name != second.division.name:
+                    members.remove(second)
+                    return first, second
 
-        for _ in range(threshold):
-            second = random.choice(members)
-            if first.division.name != second.division.name:
-                members.remove(second)
-                return first, second
-
-        return first, random.sample(members, 1)[0]
+            return first, random.sample(members, 1)[0]
         
 class BlackHoleMatchingStrategy(MatchingStrategy):
     """Chuck it in the bin"""
