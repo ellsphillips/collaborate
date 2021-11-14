@@ -33,38 +33,14 @@ def main():
 
     all_members = service.get_all_members()
     
-    print(service.get_id(AUTHOR))
-        
-    print(service.get_member(email=AUTHOR))
-
-    # print(
-    #     *[
-    #         " meets ".join([
-    #             m.name.split()[1] + f" ({m.division.name})"
-    #             for m in sorted(
-    #                 service.match(
-    #                     all_members,
-    #                     XDMatchingStrategy()
-    #                 )
-    #             )
-    #         ])
-    #     ],
-    #     "\n"
-    # )
-
-    # print(
-    #     *[
-    #         "\t->\t".join([
-    #             first.division.name + "\t" + first.email,
-    #             second.division.name + "\t" + second.email
-    #         ]) for first, second in service.match(
-    #             all_members,
-    #             FFAMatchingStrategy()
-    #         )
-    #     ],
-    #     "\n",
-    #     sep="\n"
-    # )
+    print(
+        "\n" + "-"*50 + "\n"
+        "AUTHOR INFO"
+        "\n" + "-"*50 + "\n"
+        f"ID: {service.get_id(AUTHOR)}\n"
+        f"MEMBER OBJECT:\n{service.get_member(email=AUTHOR)}"
+        "\n" + "-"*50 + "\n"
+    )
     
 
 if __name__ == "__main__":
