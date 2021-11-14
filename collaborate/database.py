@@ -9,13 +9,12 @@ class Database:
 
     file_path: Path
 
-    def load(self) -> json.JSONDecoder:
+    def load(self) -> dict:
         with open(self.file_path) as f:
             data = json.load(f)
             
-        print(type(data))
-            
         return data
         
-    def save():
-        pass
+    def save(self, data: dict):
+        with open("data/test.json", "w") as write_file:
+            json.dump(data, write_file, indent=2)
