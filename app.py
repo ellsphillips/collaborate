@@ -33,8 +33,9 @@ def main():
     
     # Create matches
     service.match(
-        all_members,
-        XDMatchingStrategy()
+        members=all_members,
+        author=AUTHOR,
+        strategy=XDMatchingStrategy()
     )
     
 
