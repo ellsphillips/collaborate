@@ -25,18 +25,19 @@ def main():
     db = Database(MEMBERS_DATA)
     
     members_data = db.load()
-    previous_matches = read_csv(PREVIOUS_MATCHES)
 
     # Register members
     service.register_members(members_data)
     all_members = service.get_all_members()
     
     # Create matches
-    service.match(
+    matches = service.match(
         members=all_members,
         author=AUTHOR,
         strategy=XDMatchingStrategy()
     )
+
+    db.update_member_histories(matches)
     
 
 if __name__ == "__main__":
