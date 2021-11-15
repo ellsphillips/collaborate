@@ -29,9 +29,9 @@ class Database:
             
         return data
         
-    def save(self, data: dict):
-        with open("data/test.json", "w") as write_file:
-            json.dump(data, write_file, indent=2)
+    def save(self) -> None:
+        with open(self.file_path, "w") as f:
+            json.dump(self.__data, f, indent=2)
         
     def _buddy(
         self,
