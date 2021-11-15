@@ -57,9 +57,14 @@ class CollaborateService:
     def match(
         self,
         members: List[Member],
+        author: str,
         strategy: MatchingStrategy
     ) -> list:
         matcher = Matcher(members)
+
+        matcher.ensure_even(
+            self.get_member(email=author)
+        )
 
         matcher.remove_duplicates()
 
