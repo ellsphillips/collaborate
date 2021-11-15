@@ -61,3 +61,7 @@ class Database:
         print(
             json.dumps(self.__data, indent=2)
         )
+
+    def clear_member_histories(self) -> None:
+        for record in self.__data["members"]:
+            record["matches"] = []

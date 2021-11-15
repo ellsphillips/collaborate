@@ -37,7 +37,11 @@ def main():
         strategy=XDMatchingStrategy()
     )
 
+    db.clear_member_histories()
+
     db.update_member_histories(matches)
+
+    db.save()
     
 
 if __name__ == "__main__":
