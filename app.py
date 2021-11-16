@@ -42,6 +42,8 @@ def main():
     db.update_member_histories(matches)
 
     db.save()
+
+    db.output_table()
     
 
 if __name__ == "__main__":
