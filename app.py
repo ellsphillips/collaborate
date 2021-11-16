@@ -14,7 +14,7 @@ from collaborate.match import (
 AUTHOR = "elliott.phillips@ons.gov.uk"
 DATA_DIR = pathlib.Path("data/")
 MEMBERS_DATA = DATA_DIR / "members.json"
-PREVIOUS_MATCHES = DATA_DIR / "previous_matches.csv"
+NEW_MATCHES = DATA_DIR / "new_matches.csv"
 
 
 def main():
@@ -43,7 +43,7 @@ def main():
 
     db.save()
 
-    db.output_table()
+    db.output_table(NEW_MATCHES)
     
 
 if __name__ == "__main__":

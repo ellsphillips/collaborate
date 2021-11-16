@@ -30,7 +30,7 @@ class Database:
             
         return data
 
-    def output_table(self) -> None:
+    def output_table(self, out_file: Path) -> None:
         unique = set(
             tuple(sorted([
                 member["email"],
@@ -41,7 +41,7 @@ class Database:
         )
 
         savetxt(
-            'test.txt',
+            out_file,
             array(list(unique)),
             fmt="%s",
             delimiter=",",
