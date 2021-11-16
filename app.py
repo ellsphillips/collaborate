@@ -36,12 +36,9 @@ def main():
     )
 
     # Database management
-    db.clear_member_histories()
-
-    db.update_member_histories(matches)
-
-    db.save()
-
+    db.clear_member_histories(),
+    db.update_member_histories(matches),
+    db.save(),
     db.output_table(NEW_MATCHES)
     
 

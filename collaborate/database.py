@@ -1,11 +1,14 @@
 import json
+import functools
 from dataclasses import dataclass, field
 from pathlib import Path
 from numpy import array, savetxt
-from typing import List
+from typing import Callable, List
 
 from collaborate.member import Member
 
+
+ComposableFunction = Callable[[float], float]
 
 @dataclass
 class Database:
@@ -21,6 +24,12 @@ class Database:
     @data.setter
     def data(self, db_obj: dict) -> None:
         self.__data = db_obj
+
+    def do(*functions: ComposableFunction) -> ComposableFunction:
+        return functools.reduce(
+            lambda f, g: lambda x: g(f(x)),
+            functions
+        )
 
     def load(self) -> dict:
         with open(self.file_path) as f:
