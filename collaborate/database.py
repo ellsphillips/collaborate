@@ -1,6 +1,7 @@
+import json
 from dataclasses import dataclass, field
 from pathlib import Path
-import json
+from numpy import array, savetxt
 from typing import List
 
 from collaborate.member import Member
@@ -28,6 +29,25 @@ class Database:
         self.data = data
             
         return data
+
+    def output_table(self) -> None:
+        unique = set(
+            tuple(sorted([
+                member["email"],
+                member["matches"][-1]
+            ]))
+            for member in self.__data["members"]
+            if member["matches"]
+        )
+
+        savetxt(
+            'test.txt',
+            array(list(unique)),
+            fmt="%s",
+            delimiter=",",
+            header="Match-1,Match-2",
+            comments=""
+        )
         
     def save(self) -> None:
         with open(self.file_path, "w") as f:
