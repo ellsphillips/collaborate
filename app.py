@@ -1,6 +1,5 @@
 import os
 import pathlib
-from pandas import read_csv
 
 from collaborate.database import Database
 from collaborate.service import CollaborateService
@@ -21,9 +20,8 @@ def main():
     # Create a service provider
     service = CollaborateService()
 
-    # Load datasets
+    # Load dataset
     db = Database(MEMBERS_DATA)
-    
     members_data = db.load()
 
     # Register members
@@ -37,6 +35,7 @@ def main():
         strategy=XDMatchingStrategy()
     )
 
+    # Database management
     db.clear_member_histories()
 
     db.update_member_histories(matches)
