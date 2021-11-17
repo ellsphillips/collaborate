@@ -58,7 +58,14 @@ class Database:
             comments=""
         )
         
-    def save(self) -> None:
+    def save(
+        self,
+        new_matches: List[List[Member]],
+        output_table: Path
+    ) -> None:
+        self.update_member_histories(new_matches)
+        self.output_table(output_table)
+
         with open(self.file_path, "w") as f:
             json.dump(self.__data, f, indent=2)
         
